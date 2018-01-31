@@ -19,7 +19,7 @@ class Connection {
      *
      * @return Connection
      */
-    public static function getInstance()
+    public static function getIxnstance()
     {
         if (!function_exists("curl_init")) {
             Error::throwError("cine");
@@ -72,14 +72,15 @@ class Connection {
         }
     }
 
-     /**
+    /**
      * Sends request to Worldpay API
      * @param string $action
      * @param string $json
      * @param bool $expectResponse
      * @param string $method
-     * @return string JSON string from Worldpay
-     * */
+     *
+     * @return bool|mixed
+     */
     public function sendRequest($action, $json = false, $expectResponse = false, $method = 'POST')
     {
         $ch = curl_init();
@@ -172,7 +173,9 @@ class Connection {
     /**
      * Handle response object
      * @param string $response
-     * */
+     *
+     * @return mixed
+     */
     private static function handleResponse($response)
     {
         return json_decode($response, true);
