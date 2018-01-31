@@ -19,7 +19,7 @@ class Connection {
      *
      * @return Connection
      */
-    public static function getIxnstance()
+    public static function getInstance()
     {
         if (!function_exists("curl_init")) {
             Error::throwError("cine");
